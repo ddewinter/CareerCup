@@ -17,22 +17,34 @@ namespace Problems
             
             StringBuilder print = new StringBuilder();
 
+            int currentLevel = 0;
             while (nodes.Count != 0)
             {
                 var n = nodes.Dequeue();
 
+                if (n.Level != 0)
+                {
+                    print.Append(currentLevel != n.Level ? '\n' : ',');
+                }
+
                 print.Append(n.Name);
+
+                currentLevel = n.Level;
 
                 if (n.Left != null)
                 {
-                    nodes.Enqueue(n.Left);   
+                    nodes.Enqueue(n.Left);
+                    n.Left.Level = currentLevel + 1;
                 }
 
                 if (n.Right != null)
                 {
                     nodes.Enqueue(n.Right);
+                    n.Right.Level = currentLevel + 1;
                 }
             }
+
+            print.Append('\n');
 
             return print.ToString();
         }
@@ -75,5 +87,6 @@ namespace Problems
         public Node Left { get; set; }
         public Node Right { get; set; }
         public string Name { get; private set; }
+        public int Level { get; set; }
     }
 }
