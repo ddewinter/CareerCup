@@ -12,6 +12,11 @@ namespace Problems
     {
         public string GetPrintString(Node treeRoot)
         {
+            if (treeRoot == null)
+            {
+                throw new ArgumentNullException("treeRoot");
+            }
+
             var nodes = new Queue<Node>();
             nodes.Enqueue(treeRoot);
             
