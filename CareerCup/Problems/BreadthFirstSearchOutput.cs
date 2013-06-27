@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Problems
 {
-    public class Class1
+    public class BreadthFirstSearchOutput
     {
     }
 }
