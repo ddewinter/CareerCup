@@ -75,6 +75,19 @@ namespace Problems
             // Assert
             str.Should().Be("A\nB,C\nD,E,F,G\n");
         }
+
+        [Test]
+        public void Root_should_not_be_null()
+        {
+            // Arrange
+            var subjectUnderTest = new BreadthFirstSearchOutput();
+
+            // Act
+            Action a = () => subjectUnderTest.GetPrintString(null);
+
+            // Assert
+            a.ShouldThrow<ArgumentNullException>().And.ParamName.Should().Be("treeRoot");
+        }
     }
 
     public class Node
