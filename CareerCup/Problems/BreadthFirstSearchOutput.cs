@@ -12,7 +12,7 @@ namespace Problems
     {
         public string GetPrintString(Node treeRoot)
         {
-            throw new NotImplementedException();
+            return "null";
         }
     }
 
@@ -47,10 +47,11 @@ namespace Problems
     {
         public Node(string name)
         {
-            throw new NotImplementedException();
+            this.Name = name;
         }
 
         public Node Left { get; set; }
         public Node Right { get; set; }
+        public string Name { get; private set; }
     }
 }
