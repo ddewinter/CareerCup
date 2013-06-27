@@ -12,7 +12,29 @@ namespace Problems
     {
         public string GetPrintString(Node treeRoot)
         {
-            return "null";
+            var nodes = new Queue<Node>();
+            nodes.Enqueue(treeRoot);
+            
+            StringBuilder print = new StringBuilder();
+
+            while (nodes.Count != 0)
+            {
+                var n = nodes.Dequeue();
+
+                print.Append(n.Name);
+
+                if (n.Left != null)
+                {
+                    nodes.Enqueue(n.Left);   
+                }
+
+                if (n.Right != null)
+                {
+                    nodes.Enqueue(n.Right);
+                }
+            }
+
+            return print.ToString();
         }
     }
 
