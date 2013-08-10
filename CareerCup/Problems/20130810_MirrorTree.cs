@@ -14,10 +14,28 @@ namespace MirrorTree
                 return null;
             }
 
-            var tmp = root.Left;
-            root.Left = root.Right;
-            root.Right = tmp;
+            var bfs = new Queue<Node>();
+            bfs.Enqueue(root);
 
+            while (bfs.Count > 0)
+            {
+                var n = bfs.Dequeue();
+
+                if (n.Left != null)
+                {
+                    bfs.Enqueue(n.Left);
+                }
+
+                if (n.Right != null)
+                {
+                    bfs.Enqueue(n.Right);
+                }
+
+                var tmp = n.Left;
+                n.Left = n.Right;
+                n.Right = tmp;
+            }
+            
             return root;
         }
     }
@@ -60,6 +78,28 @@ namespace MirrorTree
             result.Name.Should().Be("A");
             result.Left.Name.Should().Be("C");
             result.Right.Name.Should().Be("B");
+        }
+
+        [Test]
+        public void Root_with_two_levels_returns_flipped_tree()
+        {
+            Node n = new Node("R")
+            {
+                Left = new Node("S")
+                {
+                    Left = new Node("T"),
+                    Right = new Node("U"),
+                }
+            };
+
+            var p = new Problem();
+            var result = p.MirrorTree(n);
+
+            result.Name.Should().Be("R");
+            result.Left.Should().BeNull();
+            result.Right.Name.Should().Be("S");
+            result.Right.Left.Name.Should().Be("U");
+            result.Right.Right.Name.Should().Be("T");
         }
     }
 
