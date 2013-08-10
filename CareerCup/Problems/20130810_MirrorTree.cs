@@ -31,6 +31,17 @@ namespace MirrorTree
 
             result.Should().BeNull();
         }
+
+        [Test]
+        public void Root_with_no_children_returns_root()
+        {
+            Node n = new Node("A");
+
+            var p = new Problem();
+            var result = p.MirrorTree(n);
+
+            result.Name.Should().Be("A");
+        }
     }
 
     public class Node
