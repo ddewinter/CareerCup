@@ -14,6 +14,10 @@ namespace MirrorTree
                 return null;
             }
 
+            var tmp = root.Left;
+            root.Left = root.Right;
+            root.Right = tmp;
+
             return root;
         }
     }
@@ -41,6 +45,21 @@ namespace MirrorTree
             var result = p.MirrorTree(n);
 
             result.Name.Should().Be("A");
+        }
+
+        [Test]
+        public void Root_with_children_returns_flipped_children()
+        {
+            Node n = new Node("A");
+            n.Left = new Node("B");
+            n.Right = new Node("C");
+
+            var p = new Problem();
+            var result = p.MirrorTree(n);
+
+            result.Name.Should().Be("A");
+            result.Left.Name.Should().Be("C");
+            result.Right.Name.Should().Be("B");
         }
     }
 
