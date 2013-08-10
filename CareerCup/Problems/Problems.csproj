@@ -47,7 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BreadthFirstSearchOutput.cs" />
+    <Compile Include="20130626_BreadthFirstSearchOutput.cs" />
+    <Compile Include="20130810_MirrorTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

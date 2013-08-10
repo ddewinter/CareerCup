@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Problems
+namespace BreadthFirstSearchOutput
 {
-    public class BreadthFirstSearchOutput
+    public class Problem
     {
         public string GetPrintString(Node treeRoot)
         {
@@ -72,7 +72,7 @@ namespace Problems
             right.Left = new Node("F");
             right.Right = new Node("G");
 
-            var subjectUnderTest = new BreadthFirstSearchOutput();
+            var subjectUnderTest = new Problem();
 
             // Act
             var str = subjectUnderTest.GetPrintString(treeRoot);
@@ -85,7 +85,7 @@ namespace Problems
         public void Root_should_not_be_null()
         {
             // Arrange
-            var subjectUnderTest = new BreadthFirstSearchOutput();
+            var subjectUnderTest = new Problem();
 
             // Act
             Action a = () => subjectUnderTest.GetPrintString(null);
